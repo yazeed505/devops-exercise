@@ -1,0 +1,66 @@
+# General
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*.swp
+*.idea/
+.vscode/
+*.sublime*
+.project
+*.classpath
+*.settings/
+*.history
+*.vs/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
+._*
+
+# Terraform specific
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+terraform.tfstate
+crash.log
+*.tfvars
+*.tfvars.json
+.override.tf
+.override.tf.json
+.terraformrc
+terraform.rc
+*.tfplan
+*.tfplan.*
+*.tfstate.backup
+.terraform.lock.hcl
+
+# Ignore all .terraform directories
+**/.terraform/*
+
+# Ignore output of the Terraform plan
+*.tfplan
+
+# Node_modules and coverage directories
+node_modules/
+coverage/
+
+# Environment files
+.env
+.env.*
+
+# Build output directories
+build/
+dist/
+
+# Log files
+*.log
+
+# Dependency directories
+jspm_packages/
+bower_components/
+
+# Ignore binaries that might​⬤
