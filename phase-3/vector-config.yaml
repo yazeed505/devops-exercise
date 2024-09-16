@@ -1,0 +1,29 @@
+data_dir: "/var/lib/vector"
+
+sources:
+  k8s_logs:
+    type: kubernetes_logs
+    ignore_older: 86400
+    include_containers: []
+    exclude_containers: []
+
+transforms:
+  add_pod_metadata:
+    type: remap
+    inputs:
+      - k8s_logs
+    source: |
+      .pod_name = .kubernetes.pod_name
+      .container_name = .kubernetes.container_name
+      .namespace = .kubernetes.namespace_name
+
+sinks:
+  loki:
+    type: loki
+    inputs:
+      - add_pod_metadata
+    endpoint: "http://loki.monitoring.svc.cluster.local:3100"
+    labels:
+      namespace: "{{ namespace }}"
+      pod: "{{ pod_name }}"
+      container: "{{ container_name }}"
