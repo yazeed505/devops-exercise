@@ -170,7 +170,7 @@ postgresql:
   # We highly recommend you do NOT use this subchart as is to run Postgres in a container
   # for your production instance of Retool; it is a default. Please use a managed Postgres,
   # or self-host more permanently. Use enabled: false and set in config above to do so.
-  enabled: false
+  enabled: true
   ssl_enabled: false
   auth:
     database: hammerhead_production
@@ -238,8 +238,8 @@ resources:
   # - memory: 4096Mi
   # If you only have 1 replica, please double the above numbers.
   limits:
-    cpu: 4096m
-    memory: 8192Mi
+    cpu: 2048m
+    memory: 4096Mi
   requests:
     cpu: 2048m
     memory: 4096Mi
@@ -331,13 +331,13 @@ workflows:
     # A replicaCount of 1 will launch 6 pods -- 1 workflow backend, 1 workflow worker, and 4 pods that make up the executor temporal cluster
     # Scaling this number will increase the number of workflow workers, e.g. a replicaCount of 4
     # will launch 9 pods -- 1 workflow backend, 4 workflow workers, and 4 for temporal cluster
-    replicaCount: 1
+    replicaCount: 3
 
   backend:
     # A replicaCount of 1 will launch 6 pods -- 1 workflow backend, 1 workflow worker, and 4 pods that make up the executor temporal cluster
     # Scaling this number will increase the number of workflow backends, e.g. a replicaCount of 4
     # will launch 9 pods -- 4 workflow backend, 1 workflow workers, and 4 for temporal cluster
-    replicaCount: 1
+    replicaCount: 3
 
   # Timeout for queries, in ms. This will set the timeout for workflows-related pods only
   # If this value is not set but config.dbConnectorTimeout is, we will set workflows pod timeouts
