@@ -185,7 +185,7 @@ postgresql:
   image:
     repository: "postgres"
     tag: "13"
-  postgresqlDataDir: "/home/docker/data"
+  postgresqlDataDir: "/data/pgdata"
   primary:
     persistence:
       enabled: false
