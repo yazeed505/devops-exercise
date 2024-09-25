@@ -74,27 +74,27 @@ resource "kubernetes_service" "demo_api_service" {
   }
 }
 
-resource "helm_release" "nginx_ingress" {
-  name       = "nginx-ingress"
-  repository = "https://kubernetes.github.io/ingress-nginx"
-  chart      = "ingress-nginx"
-  namespace  = "default"
+# resource "helm_release" "nginx_ingress" {
+#   name       = "nginx-ingress"
+#   repository = "https://kubernetes.github.io/ingress-nginx"
+#   chart      = "ingress-nginx"
+#   namespace  = "default"
 
-  set {
-    name  = "controller.service.internal.enabled"
-    value = "true"
-  }
+#   set {
+#     name  = "controller.service.internal.enabled"
+#     value = "true"
+#   }
 
-  set {
-    name  = "controller.service.loadBalancerSourceRanges[0]"
-    value = aws_vpc.main.cidr_block
-  }
+#   set {
+#     name  = "controller.service.loadBalancerSourceRanges[0]"
+#     value = aws_vpc.main.cidr_block
+#   }
 
-  set {
-    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-internal"
-    value = "true"
-  }
-}
+#   set {
+#     name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-internal"
+#     value = "true"
+#   }
+# }
 
 resource "kubernetes_ingress" "demo_api_ingress" {
   metadata {

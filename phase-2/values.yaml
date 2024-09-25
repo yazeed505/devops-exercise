@@ -170,7 +170,7 @@ postgresql:
   # We highly recommend you do NOT use this subchart as is to run Postgres in a container
   # for your production instance of Retool; it is a default. Please use a managed Postgres,
   # or self-host more permanently. Use enabled: false and set in config above to do so.
-  enabled: true
+  enabled: false
   ssl_enabled: false
   auth:
     database: hammerhead_production
@@ -188,7 +188,7 @@ postgresql:
   postgresqlDataDir: "/home/docker/data"
   primary:
     persistence:
-      enabled: true
+      enabled: false
       mountPath: "/data/"
 
 serviceAccount:
